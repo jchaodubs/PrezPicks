@@ -1,0 +1,9 @@
+{
+    "lang": "zh",
+    "intro" : "找出您支持哪位总统候选人",
+    "get_started": "开始使用",
+    "select_all": "选择全部",
+    "clear_all" : "全部清除",
+    "next" : "下一个",
+    "home" : "回去"
+}

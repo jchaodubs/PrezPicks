@@ -1,0 +1,9 @@
+{
+    "lang": "es",
+    "intro" : "Descubra con qué candidato presidencial se alinea",
+    "get_started":"Empezar",
+    "select_all": "Seleccionar todo",
+    "clear_all" : "deseleccionar todo",
+    "next" : "Próximo",
+    "home": "casa"
+}

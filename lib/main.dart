@@ -5,11 +5,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'home.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -83,6 +81,11 @@ class _MyAppState extends State<MyApp> {
                   fontSize: 18,
                   fontWeight: FontWeight.w400,
                   color: Color(0xFF7A7A7A),
+                  fontFamily: 'Instrument'),
+                  displayMedium: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xFF1C1C1C),
                   fontFamily: 'Instrument'),
               labelSmall: TextStyle(
                   fontSize: 15,

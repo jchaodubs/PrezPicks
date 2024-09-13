@@ -50,7 +50,6 @@ dependencies:
   url_launcher: ^6.3.0
   buy_me_a_coffee: ^0.0.1
   flutter_svg: ^2.0.10+1
-  flutter_dotenv: ^5.1.0
 
 
 dev_dependencies:
@@ -70,7 +69,6 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-
     - assets/images/kamalamamala.jpg
     - assets/images/trumpy.jpg
     - assets/images/prezpicks.svg

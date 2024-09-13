@@ -171,12 +171,15 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
                           return TopicsPage(
+                              title: widget.title,
+                              setLocale: widget.setLocale,
                               locale: localeMapping[selectedValue]!);
                         }));
                       } else {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return TopicsPage(locale: localeMapping['English']!);
+                          return TopicsPage(title: widget.title,
+                              setLocale: widget.setLocale,locale: localeMapping['English']!);
                         }));
                       }
                     },

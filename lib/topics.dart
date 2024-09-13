@@ -158,14 +158,27 @@ class _TopicsPageState extends State<TopicsPage> {
           ],
         ),
       ),
-      body: Column(
+      body: Center(
+
+        child: SingleChildScrollView(
+          child: ConstrainedBox(
+              constraints: BoxConstraints(
+                //minHeight: MediaQuery.of(context).size.height,
+                //maxHeight: MediaQuery.of(context).size.height
+              ),
+
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
+
+ Padding(
+              padding: const EdgeInsets.all(15.0),
               child: Card(
                 elevation: 0,
                 color: Color(0xFFf8f8f8),
+                child: Container(
+                  height: 600,
+                
                 child: GridView.builder(
                   padding: const EdgeInsets.all(12.0),
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -179,21 +192,19 @@ class _TopicsPageState extends State<TopicsPage> {
                     return GestureDetector(
                       onTap: () => _updateSelectedTopics(index),
                       child: Container(
-
                         decoration: BoxDecoration(
                           boxShadow: [
-                                     _selectedTopics[index] ?             
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 10,
-                          spreadRadius: 2,
-                        )
-                        :
-                        BoxShadow(
-                          color: Colors.transparent,
-                          blurRadius: 0,
-                          spreadRadius: 0,
-                        ) 
+                            _selectedTopics[index]
+                                ? BoxShadow(
+                                    color: Colors.black.withOpacity(0.1),
+                                    blurRadius: 10,
+                                    spreadRadius: 2,
+                                  )
+                                : BoxShadow(
+                                    color: Colors.transparent,
+                                    blurRadius: 0,
+                                    spreadRadius: 0,
+                                  )
                           ],
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(10.0),
@@ -213,12 +224,23 @@ class _TopicsPageState extends State<TopicsPage> {
                       ),
                     );
                   },
-                ),
+                )),
               ),
             ),
-          ),
 
-          ElevatedButton(
+        ],
+      ),
+    ))
+    ),
+     bottomNavigationBar: Container(
+            height: 100,
+
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+
+
+                          ElevatedButton(
             onPressed: () {
               if (_isSelected()) {
                 _clearAll();
@@ -226,11 +248,22 @@ class _TopicsPageState extends State<TopicsPage> {
                 _selectAll();
               }
             },
+             style: ElevatedButton.styleFrom(
+              foregroundColor:_isSelected() ?   Colors.black : Colors.white,
+              backgroundColor: _isSelected() ?   Color(0xFFD9CFC1) : Color(0xFF7A7A7A),
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+            ),
             child: Text(_isSelected()
                 ? AppLocalizations.of(context)!.clear_all
                 : AppLocalizations.of(context)!.select_all),
           ),
-          const SizedBox(height: 15),
+
+
+          Padding(padding: EdgeInsets.only(bottom: 15)),
           ElevatedButton(
             onPressed: () {
               if (selectedTopicNames.isEmpty) {
@@ -244,11 +277,23 @@ class _TopicsPageState extends State<TopicsPage> {
               }
               // Navigate to next page or perform action with selectedTopicNames
             },
-            child: Text(AppLocalizations.of(context)!.next),
+            child: Text(
+              AppLocalizations.of(context)!.next,
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: Color(0xFF1C1C1C),
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+            ),
           ),
-          const SizedBox(height: 15),
-        ],
-      ),
+              ]
+            )
+     )
     );
   }
 }

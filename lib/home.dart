@@ -30,6 +30,7 @@ class _HomePageState extends State<HomePage> {
     'Español': const Locale('es'),
     '中文': const Locale('zh'),
   };
+
   String? selectedValue;
   Future<void> _launchBuyMeCoffee() async {
     final Uri url = Uri.parse('https://www.buymeacoffee.com/jchaodubs');
@@ -70,7 +71,9 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     TextButton(
                       onPressed: () {
-                        Navigator.of(context).push(_createRoute(widget.title, widget.setLocale));
+                        
+                        Navigator.of(context)
+                            .push(_createRoute(widget.title, widget.setLocale));
                         // Navigator.push(context,
                         //     MaterialPageRoute(builder: (context) {
                         //   return const FaqPage();
@@ -81,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                             MaterialStateProperty.all(Colors.transparent),
                       ),
                       child: Text(
-                        "FAQ's",
+                        AppLocalizations.of(context)!.faq,
                         style: Theme.of(context).textTheme.displaySmall,
                       ),
                     ),
@@ -94,9 +97,7 @@ class _HomePageState extends State<HomePage> {
         body: Center(
           child: SingleChildScrollView(
             child: ConstrainedBox(
-              constraints: BoxConstraints(
-
-                  ),
+              constraints: BoxConstraints(),
               child: IntrinsicHeight(
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -178,8 +179,10 @@ class _HomePageState extends State<HomePage> {
                       } else {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return TopicsPage(title: widget.title,
-                              setLocale: widget.setLocale,locale: localeMapping['English']!);
+                          return TopicsPage(
+                              title: widget.title,
+                              setLocale: widget.setLocale,
+                              locale: localeMapping['English']!);
                         }));
                       }
                     },
@@ -218,7 +221,7 @@ class _HomePageState extends State<HomePage> {
                     },
                     icon: Icon(Icons.cookie_outlined),
                     label: Text(
-                      'Buy me a cookie',
+                      AppLocalizations.of(context)!.buymeacookie,
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                     style: ElevatedButton.styleFrom(
@@ -236,10 +239,12 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-Route _createRoute(String title ,Function(Locale) setLocale) {
+Route _createRoute(String title, Function(Locale) setLocale) {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) =>
-         FaqPage(title: title, setLocale: setLocale,),
+    pageBuilder: (context, animation, secondaryAnimation) => FaqPage(
+      title: title,
+      setLocale: setLocale,
+    ),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(0.0, 1.0);
       const end = Offset.zero;

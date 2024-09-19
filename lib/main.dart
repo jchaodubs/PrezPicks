@@ -4,7 +4,7 @@ import 'firebase_options.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'home.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:firebase_database/firebase_database.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,14 +23,57 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final ValueNotifier<Locale> _locale = ValueNotifier(const Locale('en', 'US'));
+  final ValueNotifier<Locale> _locale = ValueNotifier(const Locale('en'));
 
   void setLocale(Locale locale) {
     _locale.value = locale;
   }
 
+//   final List<String> selectedTopics = [
+// '刑事司法',
+// '移民',
+// '堕胎',
+// '通货膨胀',
+// '税收',
+// '大学负担能力',
+// '能源生产',
+// '外交政策',
+// '俄罗斯-乌克兰冲突',
+// '以色列-巴勒斯坦冲突',
+// '枪支管制',
+// '医疗保健',
+// '跨性别者医疗保健',
+// '边境安全',
+// '阿片类药物',
+// '与中国贸易'
+//   ];
+
+//   Future<void> writeTopicsToDatabase() async {
+//     final DatabaseReference databaseRef =
+//         FirebaseDatabase.instance.ref('topics/zh');
+
+//     Map<String, Map<String, String>> topicsData = {};
+
+//     // Creating the structure with 'harris' and 'trump' for each topic
+//     for (var topic in selectedTopics) {
+//       topicsData[topic] = {
+//         'harris': '',
+//         'trump': '',
+//       };
+//     }
+
+//     try {
+//       // Writing to the database
+//       await databaseRef.set(topicsData);
+//       print('Data written successfully!');
+//     } catch (error) {
+//       print('Failed to write data: $error');
+//     }
+//   }
+
   @override
   Widget build(BuildContext context) {
+    //writeTopicsToDatabase();
     return ValueListenableBuilder<Locale>(
       valueListenable: _locale,
       builder: (context, locale, _) {
@@ -72,6 +115,16 @@ class _MyAppState extends State<MyApp> {
                   fontWeight: FontWeight.w200,
                   color: Color(0xFF7A7A7A),
                   fontFamily: 'Instrument'),
+              displayLarge: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xFF1C1C1C),
+                  fontFamily: 'Instrument'),
+              labelLarge: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xFF1C1C1C),
+                  fontFamily: 'Instrument'),
               bodySmall: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w200,
@@ -82,7 +135,7 @@ class _MyAppState extends State<MyApp> {
                   fontWeight: FontWeight.w400,
                   color: Color(0xFF7A7A7A),
                   fontFamily: 'Instrument'),
-                  displayMedium: TextStyle(
+              displayMedium: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w400,
                   color: Color(0xFF1C1C1C),

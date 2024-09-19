@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prezpicks/home.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class FaqPage extends StatefulWidget {
   final String title;
   final Function(Locale) setLocale;
@@ -46,12 +46,13 @@ class _FaqPage extends State<FaqPage> {
                   children: [
                     TextButton.icon(
                       onPressed: () {
+                            widget.setLocale(Locale('en', 'US'));
                         Navigator.of(context)
                             .push(_createRoute(widget.title, widget.setLocale));
                       },
                       icon: Icon(Icons.home_outlined, color: Colors.black),
                       label: Text(
-                        'Home',
+                        AppLocalizations.of(context)!.home,
                         style: Theme.of(context).textTheme.labelSmall,
                       ),
                       style: ButtonStyle(
@@ -77,44 +78,44 @@ class _FaqPage extends State<FaqPage> {
             child: Column(
               children: <Widget>[
                 Text(
-                  "Frequently Asked Questions",
+                  AppLocalizations.of(context)!.faqlong,
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
 
-                _buildFaqItem(
+               _buildFaqItem(
                   context,
-                  "What is PrezPicks?",
-                  "Prezpicks is a website meant to help people discover which presidential candidate they align closest with.",
+                  AppLocalizations.of(context)!.whatIsPrezPicks,
+                  AppLocalizations.of(context)!.whatIsPrezPicksAnswer,
                 ),
                 _buildFaqItem(
                   context,
-                  "How does PrezPicks work?",
-                  "Prezpicks retrieves the top 2 presidential candidates opinions on a variety of subject matter. Then opinions you select are added up to see which candidate you align closest with.",
+                  AppLocalizations.of(context)!.howDoesPrezPicksWork,
+                  AppLocalizations.of(context)!.howDoesPrezPicksWorkAnswer,
                 ),
                 _buildFaqItem(
                   context,
-                  "How often are candidate stances updated?",
-                  "They are updated as often as possible, if you see an outdated stance that hasn't been updated, it's likely that it's still under verification",
+                  AppLocalizations.of(context)!.howOftenAreStancesUpdated,
+                  AppLocalizations.of(context)!.howOftenAreStancesUpdatedAnswer,
                 ),
                 _buildFaqItem(
                   context,
-                  "How are candidate recommendations generated?",
-                  "PrezPicks simply adds up the opinions you selected and chooses the candidate you selected most",
+                  AppLocalizations.of(context)!.howAreRecommendationsGenerated,
+                  AppLocalizations.of(context)!.howAreRecommendationsGeneratedAnswer,
                 ),
                 _buildFaqItem(
                   context,
-                  "My candidate match was inaccurate",
-                  "If you believe your results were inaccurate, contact me at chaojeffrey831@gmail.com",
+                  AppLocalizations.of(context)!.inaccurateMatch,
+                  AppLocalizations.of(context)!.inaccurateMatchAnswer,
                 ),
                 _buildFaqItem(
                   context,
-                  "How can I provide feedback/suggestions",
-                  "You can either email me at chaojeffrey831@gmail.com or check out the github repo XXXPUTLINKXXX",
+                  AppLocalizations.of(context)!.provideFeedback,
+                  AppLocalizations.of(context)!.provideFeedbackAnswer,
                 ),
                 _buildFaqItem(
                   context,
-                  "Why do you accept donations",
-                  "This is due to the service costs of PrezPicks and to keep it updated and running for users. ",
+                  AppLocalizations.of(context)!.whyAcceptDonations,
+                  AppLocalizations.of(context)!.whyAcceptDonationsAnswer,
                 ),
 
                 // Add more ExpansionTiles here as needed

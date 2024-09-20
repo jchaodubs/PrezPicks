@@ -202,11 +202,11 @@ class _ResultsPageState extends State<ResultsPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         final String text = winner['winner'] == 'Both'
-                            ? 'Check out https://prezpicks.web.app/ Turns out I align with Trump and Harris!!!'
-                            : 'Check out https://prezpicks.web.app/ Turns out I align with ${winner['winner']}!!!';
-                        Share.share(text);
+                            ? 'Check out https://prezpicks.web.app/ Turns out I fucking love Trump and Harris!!!'
+                            : 'Check out https://prezpicks.web.app/ Turns out I fucking love ${winner['winner']}!!!';
+                        await Share.share(text);
                       },
                       style: ElevatedButton.styleFrom(
                         foregroundColor:
